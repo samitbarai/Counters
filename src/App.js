@@ -13,6 +13,7 @@ class App extends Component {
       { id: 4, value: 0 }
     ]
   };
+  
 
   handleIncrement = counter => {
     const counters = [...this.state.counters];

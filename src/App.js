@@ -5,12 +5,7 @@ import Counters from './components/counters';
 
 class App extends Component {
   state = {
-    counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 }
-    ]
+    counters: [{ id: 1, value: 0 }]
   };
 
   handleIncrement = counter => {
@@ -18,6 +13,14 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
+    this.setState({ counters });
+  };
+
+  handleDecrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
     this.setState({ counters });
   };
 
@@ -37,8 +40,8 @@ class App extends Component {
   handleAdd = () => {
     let counters = [...this.state.counters];
     const index = counters.length + 1;
-    const newCounter = {id: index, value: 0};
-    this.setState({ 
+    const newCounter = { key: index, id: index, value: 0 };
+    this.setState({
       // counters: counters.concat([newCounter])
       counters: [...counters, newCounter]
     });
@@ -55,6 +58,7 @@ class App extends Component {
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
             onAdd={this.handleAdd}
           />

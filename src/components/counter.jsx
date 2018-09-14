@@ -1,32 +1,40 @@
 
 import React, { Component } from 'react';
+import './counter.css'
 
 
 class Counter extends Component {
     
     render() {
         return <div>
-            <div>
-              Item Name which can be very long
-              <button disabled={this.props.counter.value > 0 ? false : true } onClick={() => this.props.onDecrement(this.props.counter)} className="btn btn-outline-secondary btn-sm m-2">
+            <div className='product-line'>
+              Item Number one - which has a big line
+              <button disabled={this.props.counter.value > 0 ? false : true} onClick={() => this.props.onDecrement(this.props.counter)} className="btn btn-outline-secondary btn-sm m-2">
                 -
               </button>
-              <span className={this.getBadgeClasses()}>
+              <span className={this.getBadgeClasses()} style={{ width: "80px" }}>
                 {this.formatCount()}
               </span>
-              <button onClick={() => this.props.onIncrement(this.props.counter)} className="btn btn-outline-primary btn-sm m-2">
+              <button disabled={this.props.counter.value < 5 ? false : true} onClick={() => this.props.onIncrement(this.props.counter)} className="btn btn-outline-primary btn-sm m-2">
                 +
               </button>
-              <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">
-                Delete
+              <button onClick={() => this.props.onDelete(this.props.counter.id)} className="badge badge-pill badge-danger" >
+                delete
               </button>
             </div>
+            <p className='warning-text' style={{ color: "#00000", opacity: this.props.counter.value < 5 ? 0 : 1 }}>
+              You can't add more than 5 items
+            </p>
           </div>;
     }
 
+    onHoverDelete() {
+        let classes = '';
+    }
+
     getBadgeClasses() {
-        let classes = "badge badge-";
-        classes += this.props.counter.value === 0 ? "warning" : "primary";
+        let classes = "badge m-2 p-2 badge-";
+        classes += this.props.counter.value === 0 ? "warning" : "light";
         return classes;
     }
 
@@ -34,7 +42,7 @@ class Counter extends Component {
         const { value } =  this.props.counter;
         // return value === 0 ? 'Zero' : value;
         if (value > 0) {
-            return value;
+            return value + ' items';
         }
         else {
             return 'Zero';

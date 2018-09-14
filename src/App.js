@@ -5,7 +5,7 @@ import Counters from './components/counters';
 
 class App extends Component {
   state = {
-    counters: [{ id: 1, value: 0 }]
+    counters: [{ id: 1, value: 4 }]
   };
 
   handleIncrement = counter => {

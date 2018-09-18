@@ -16,3 +16,16 @@
     color: #f4b042;
     font-size: 12px;
 }
+
+.add-bar {
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+.separator {
+    width: 480px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, .2);
+    margin: 20px;
+    margin-left: 0px;
+}

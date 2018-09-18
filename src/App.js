@@ -5,7 +5,7 @@ import Counters from './components/counters';
 
 class App extends Component {
   state = {
-    counters: [{ id: 1, value: 4 }]
+    counters: [{ id: 1, name: 'inital item name', value: 0 } ]
   };
 
   handleIncrement = counter => {
@@ -16,7 +16,7 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  handleDecrement = counter => {
+  handleDecrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
@@ -32,20 +32,21 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  handleDelete = counterId => {
+  handleDelete = (counterId) => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
   };
 
-  handleAdd = () => {
-    let counters = [...this.state.counters];
-    const index = counters.length + 1;
-    const newCounter = { key: index, id: index, value: 0 };
+  handleAdd = (name) => {
+    const counters = [...this.state.counters];
+    let id = counters.length + 1;
+    console.log(name);
     this.setState({
-      // counters: counters.concat([newCounter])
-      counters: [...counters, newCounter]
+      counters: this.state.counters.concat({id: id, name: name, value: 0})
     });
   };
+
+  
 
   render() {
     return (

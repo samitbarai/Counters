@@ -5,14 +5,12 @@ import './counter.css'
 class Counters extends Component {
 
     handleClick = () => {
-        this.props.onAdd(this.myInput.value)
-        this.myInput.value = ""
+        this.props.onAdd(this.myInput.value);
+        this.myInput.value = "";
     }
 
     render() {
-        const { onReset, onIncrement, onDecrement, onDelete, onAdd, counters } = this.props;
-        // console.log(this.props);
-        
+        const { onReset, onIncrement, onDecrement, onDelete, onAdd, counters } = this.props;        
         return (
             <div>
                 <form 
